@@ -1,33 +1,40 @@
+body {
+  background-color: black;
+  color: #ddd;
+  font-family: "Roboto Mono";
+  padding: 1em;
+  overflow: hidden;
+}
+
 .App {
-  text-align: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.mapboxgl-map {
+  height: 100%;
+  width: calc(100% + 450px);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.right {
+  width: 450px;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  z-index: 2;
 }
 
-.App-link {
-  color: #61dafb;
+.controls {
+  background: linear-gradient(to right, black 55%, rgba(0, 0, 0, 0.5));
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mapbox-logo,
+.mapboxgl-ctrl-logo {
+  display: none !important;
 }

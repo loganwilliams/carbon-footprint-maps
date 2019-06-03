@@ -1,0 +1,16 @@
+.ComparisonZips {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  overflow: scroll;
+  height: calc(100vh - 2em - 250px);
+  border-radius: 2px;
+}
+
+.value {
+  text-align: center;
+  &.black {
+    color: black;
+  }
+}
