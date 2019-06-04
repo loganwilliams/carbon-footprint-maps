@@ -4,6 +4,7 @@ body {
   font-family: "Roboto Mono";
   padding: 1em;
   overflow: hidden;
+  user-select: none;
 }
 
 .App {
@@ -25,13 +26,6 @@ body {
   top: 1em;
   left: 1em;
   z-index: 2;
-}
-
-.controls {
-  background: linear-gradient(to right, black 55%, rgba(0, 0, 0, 0.5));
-  padding: 0.5em;
-  margin: 0.5em;
-  border-radius: 4px;
 }
 
 .mapbox-logo,

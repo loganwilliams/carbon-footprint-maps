@@ -8,14 +8,15 @@ class Value extends Component {
     const { zip, value } = this.props;
 
     const normalizedValue =
-      (zip[value] - stats[value].min) / (stats[value].max - stats[value].min);
+      (zip[stats[value].id] - stats[value].min) /
+      (stats[value].max - stats[value].min);
 
     return (
       <div
         className={"value" + (normalizedValue > 0.5 ? " black" : " white")}
         style={{ backgroundColor: d3.interpolateViridis(normalizedValue) }}
       >
-        {Math.round(zip[value])}
+        {Math.round(zip[stats[value].id])}
       </div>
     );
   }
@@ -29,28 +30,28 @@ class FootprintComponents extends Component {
       <div className="components">
         <div className="component">
           <div className="title">H</div>
-          <Value value="Housing (tCO2e/yr)" zip={zip} />
+          <Value value="housing" zip={zip} />
         </div>
 
         <div className="component">
           <div className="title">T</div>
-          <Value value="Transport (tCO2e/yr)" zip={zip} />
+          <Value value="transport" zip={zip} />
         </div>
 
         <div className="component">
           <div className="title">F</div>
-          <Value value="Food (tCO2e/yr)" zip={zip} />
+          <Value value="food" zip={zip} />
         </div>
 
         <div className="component">
           <div className="title">G</div>
 
-          <Value value="Goods (tCO2e/yr)" zip={zip} />
+          <Value value="goods" zip={zip} />
         </div>
 
         <div className="component">
           <div className="title">S</div>
-          <Value value="Services (tCO2e/yr)" zip={zip} />
+          <Value value="services" zip={zip} />
         </div>
       </div>
     );
@@ -87,10 +88,7 @@ class ZipCode extends Component {
               (zip.GEOID10 ? zip.GEOID10 : zip.ZipCode)}
           </div>
           <div className="total">
-            <Value
-              zip={zip}
-              value={"Total Household Carbon Footprint (tCO2e/yr)"}
-            />
+            <Value zip={zip} value={"tco2"} />
           </div>
           <FootprintComponents zip={zip} />
         </div>

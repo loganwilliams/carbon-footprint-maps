@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import Choropleth from "./components/Choropleth/Choropleth";
 import ZipCode from "./components/ZipCode/ZipCode";
-
+import Controls from "./components/Controls/Controls";
+import LayerControl from "./components/Controls/LayerControl";
 import "./App.css";
 import ComparisonZips from "./components/ComparisonZips/ComparisonZips";
 
@@ -15,7 +16,13 @@ class App extends Component {
       targetIncome: 12000,
       hovered: null,
       selected: null,
-      center: [-74, 40.7]
+      center: [-74, 40.7],
+      mapLayer: { norm: "household", value: "tco2" },
+      comparison: [
+        { value: "income", dir: "similar" },
+        { value: "popden", dir: "similar" },
+        { value: "tco2", dir: "similar" }
+      ]
     };
   }
 
@@ -39,6 +46,10 @@ class App extends Component {
     });
   }
 
+  onChange(selection) {
+    this.setState({ mapLayer: { ...this.state.mapLayer, ...selection } });
+  }
+
   render() {
     return (
       <div className="App">
@@ -52,6 +63,7 @@ class App extends Component {
                 : this.state.selected.ZipCode
               : ""
           }
+          layers={this.state.mapLayer}
           // onMouseMove={this.hover.bind(this)}
         />
         {this.state.selected ? (
@@ -59,10 +71,7 @@ class App extends Component {
             <div className="preview">
               <ZipCode preview={true} zip={this.state.selected} />
             </div>
-            <div className="controls">
-              Similar <strong>income</strong>, <strong>population</strong>, and{" "}
-              <strong>carbon footprint</strong>.
-            </div>
+            <Controls />
             <ComparisonZips
               zipcodes={this.state.zipcodes}
               targetZip={this.state.selected}
@@ -72,6 +81,10 @@ class App extends Component {
             />
           </div>
         ) : null}
+        <LayerControl
+          onChange={this.onChange.bind(this)}
+          mapLayer={this.state.mapLayer}
+        />
       </div>
     );
   }

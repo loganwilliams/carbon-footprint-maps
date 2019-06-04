@@ -1,0 +1,32 @@
+.LayerControl {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 3;
+  width: 300px;
+  flex: 1 1;
+
+  .normalization {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+
+    div {
+      flex-grow: 1;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      margin: 0.25em;
+      padding: 0.25em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(40, 30, 50, 0.5);
+      }
+    }
+
+    .active {
+      background-color: rgba(0, 0, 0, 0.8);
+      font-weight: bold;
+    }
+  }
+}

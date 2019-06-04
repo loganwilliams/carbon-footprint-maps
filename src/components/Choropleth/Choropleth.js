@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactMapboxGl, { Source, Layer } from "react-mapbox-gl";
+import { stats } from "../../constants/constants";
 
 class Choropleth extends Component {
   constructor(props) {
@@ -16,10 +17,28 @@ class Choropleth extends Component {
   }
 
   render() {
+    console.log(this.props.layers);
+
+    let layer = this.props.layers
+      ? stats[this.props.layers.value]
+      : stats["tco2"];
+
+    console.log(layer);
+
     const Map = this.state.map;
 
-    let min = 0;
-    let range = 30 - min;
+    let min = layer.min;
+    let range = layer.max - layer.min;
+
+    let valueStyle;
+
+    if (this.props.layers.norm === "household") {
+      valueStyle = ["get", layer.id];
+    } else {
+      valueStyle = ["/", ["get", layer.id], ["get", "PersonsPerHousehold"]];
+      min /= 2.65;
+      range /= 2.65;
+    }
 
     return (
       <Map
@@ -45,15 +64,12 @@ class Choropleth extends Component {
           sourceId="climate"
           type="fill"
           sourceLayer="joined2"
+          filter={["has", layer.id]}
           paint={{
             "fill-color": [
               "interpolate",
               ["linear"],
-              [
-                "/",
-                ["get", "Total Household Carbon Footprint (tCO2e/yr)"],
-                ["get", "PersonsPerHousehold"]
-              ],
+              valueStyle,
               0 * range + min,
               "#440154",
               0.25 * range + min,
@@ -65,12 +81,7 @@ class Choropleth extends Component {
               1.0 * range + min,
               "#fde725"
             ],
-            "fill-opacity": [
-              "case",
-              ["has", "Total Household Carbon Footprint (tCO2e/yr)"],
-              0.8,
-              0.0
-            ],
+            "fill-opacity": 0.8,
             "fill-outline-color": "rgba(1,1,1,0)"
           }}
           before="hillshade_highlight_bright"
@@ -89,7 +100,6 @@ class Choropleth extends Component {
             "line-width": 2,
             "line-opacity": 0.8
           }}
-          before="hillshade_highlight_bright"
         />
       </Map>
     );

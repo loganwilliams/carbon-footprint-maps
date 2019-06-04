@@ -11,6 +11,13 @@
 
   .img {
     max-height: 150px;
+    width: 100%;
+
+    img {
+      height: 100%;
+      max-width: 100%;
+      border-radius: 4px;
+    }
   }
 
   .name {
@@ -46,7 +53,8 @@
   }
 
   .total,
-  .name {
+  .name,
+  .stat {
     margin-right: 1em;
   }
 
@@ -71,12 +79,6 @@
 // .zip:hover .stats {
 //   opacity: 1;
 // }
-
-.zip img {
-  max-width: 100%;
-  height: 100%;
-  border-radius: 4px;
-}
 
 .preview {
   width: auto;

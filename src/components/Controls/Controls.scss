@@ -1,0 +1,17 @@
+.Controls {
+  background: linear-gradient(to right, black 55%, rgba(0, 0, 0, 0.5));
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 4px;
+
+  select {
+    font-family: "Roboto Mono";
+    -webkit-appearance: none;
+    border-radius: 2px;
+    color: white;
+    background-color: black;
+    font-size: 14px;
+    padding: 0.125em 0.25em;
+    margin-right: 1em;
+  }
+}

@@ -40,9 +40,9 @@ class ComparisonZips extends Component {
     let sorted = this.sortValues([
       {
         value: "Total Household Carbon Footprint (tCO2e/yr)",
-        target: this.props.targetZip[
-          "Total Household Carbon Footprint (tCO2e/yr)"
-        ],
+        target:
+          this.props.targetZip["Total Household Carbon Footprint (tCO2e/yr)"] /
+          1,
         tolerance: 0.9,
         weight: 100
       },
@@ -54,7 +54,7 @@ class ComparisonZips extends Component {
       },
       {
         value: "Population",
-        target: this.props.targetZip.Population,
+        target: this.props.targetZip.popden,
         weight: 5
       }
     ]);
