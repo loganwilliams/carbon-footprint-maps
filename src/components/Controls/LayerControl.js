@@ -7,6 +7,22 @@ class LayerControl extends Component {
 
     return (
       <div className="LayerControl">
+        <div id="info">
+          <p>
+            An attempt to dig deeper into the interrelation of land use, wealth,
+            and greenhouse gas emissions.
+          </p>
+
+          <div id="me">
+            <a href="http://subject.space">Logan Williams</a>
+          </div>
+
+          <p>
+            Data and the hard work by the{" "}
+            <a href="https://coolclimate.berkeley.edu/">CoolClimate Network</a>{" "}
+            at UC Berkeley.
+          </p>
+        </div>
         <div className="normalization">
           <div
             className={mapLayer.value === "tco2" ? "active" : ""}

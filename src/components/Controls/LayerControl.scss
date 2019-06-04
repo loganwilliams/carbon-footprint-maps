@@ -9,6 +9,21 @@
   border-radius: 4px;
   padding: 0.25em;
 
+  #info {
+    font-size: 14px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    margin-top: -0.5em;
+
+    #me {
+      text-align: right;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
   .label {
     margin-left: 0.25em;
     font-weight: bold;
