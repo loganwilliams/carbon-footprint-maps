@@ -1,0 +1,27 @@
+.bar {
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    #440154,
+    #3b528b,
+    #21918c,
+    #5ec962,
+    #fde725
+  );
+  border-radius: 2px;
+}
+#legend {
+  border-radius: 2px;
+  padding: 5px;
+  margin-bottom: 0.25em;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: "Roboto Mono";
+  color: white;
+  font-size: 12px;
+}

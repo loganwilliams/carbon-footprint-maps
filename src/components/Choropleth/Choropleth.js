@@ -40,6 +40,9 @@ class Choropleth extends Component {
       range /= 2.65;
     }
 
+    console.log(layer);
+    const base = layer.base || 1;
+
     return (
       <Map
         style="mapbox://styles/loganw/cjw2lyxv406gz1cmrmlsm5j3m"
@@ -70,15 +73,15 @@ class Choropleth extends Component {
               "interpolate",
               ["linear"],
               valueStyle,
-              0 * range + min,
+              Math.pow(0, base) * range + min,
               "#440154",
-              0.25 * range + min,
+              Math.pow(0.25, base) * range + min,
               "#3b528b",
-              0.5 * range + min,
+              Math.pow(0.5, base) * range + min,
               "#21918c",
-              0.75 * range + min,
+              Math.pow(0.75, base) * range + min,
               "#5ec962",
-              1.0 * range + min,
+              Math.pow(1.0, base) * range + min,
               "#fde725"
             ],
             "fill-opacity": 0.8,

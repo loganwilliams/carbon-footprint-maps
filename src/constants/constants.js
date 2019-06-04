@@ -10,48 +10,55 @@ export const stats = {
     min: 0,
     max: 75,
     name: "Per household carbon footprint (tCO2e/yr)",
-    shortname: "carbon footprint"
+    shortname: "carbon footprint",
+    units: "tCO2e/yr"
   },
   housing: {
     id: "Housing (tCO2e/yr)",
     min: 3.84,
     max: 25,
     name: "Housing carbon footprint, per household (tCO2e/yr)",
-    shortname: "carbon footprint (housing)"
+    shortname: "carbon footprint (housing)",
+    units: "tCO2e/yr"
   },
   transport: {
     id: "Transport (tCO2e/yr)",
     min: 2.76,
     max: 30,
     name: "Transport carbon footprint, per household (tCO2e/yr)",
-    shortname: "carbon footprint (transportation)"
+    shortname: "carbon footprint (transportation)",
+    units: "tCO2e/yr"
   },
   food: {
     id: "Food (tCO2e/yr)",
     min: 3,
     max: 12,
     name: "Food carbon footprint, per household (tCO2e/yr)",
-    shortname: "carbon footprint (food)"
+    shortname: "carbon footprint (food)",
+    units: "tCO2e/yr"
   },
   goods: {
     id: "Goods (tCO2e/yr)",
     min: 2.5,
     max: 10,
     name: "Goods carbon footprint, per household (tCO2e/yr)",
-    shortname: "carbon footprint (goods)"
+    shortname: "carbon footprint (goods)",
+    units: "tCO2e/yr"
   },
   services: {
     id: "Services (tCO2e/yr)",
     min: 2.5,
     max: 12,
     name: "Services carbon footprint, per household (tCO2e/yr)",
-    shortname: "carbon footprint (services)"
+    shortname: "carbon footprint (services)",
+    units: "tCO2e/yr"
   },
   vmt: {
     id: "Vehicle miles traveled",
     min: 3271,
     max: 40000,
-    name: "Vehicle miles traveled (miles/year)"
+    name: "Vehicle miles traveled (miles/year)",
+    units: "miles/yr"
   },
   income: {
     id: "IncomePerHousehold",
@@ -75,8 +82,9 @@ export const stats = {
     min: 0,
     max: 30000,
     name: "Population density (pop/sq. mi.)",
-    base: 2,
-    shortname: "population density"
+    base: 5,
+    shortname: "population density",
+    units: "pop/sq. mile."
   },
   population: {
     id: "Population",

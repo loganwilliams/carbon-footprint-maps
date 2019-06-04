@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Legend from "../Legend/Legend";
 import "./LayerControl.scss";
 
 class LayerControl extends Component {
@@ -23,6 +24,7 @@ class LayerControl extends Component {
             at UC Berkeley.
           </p>
         </div>
+        <Legend layers={this.props.mapLayer} />
         <div className="normalization">
           <div
             className={mapLayer.value === "tco2" ? "active" : ""}
