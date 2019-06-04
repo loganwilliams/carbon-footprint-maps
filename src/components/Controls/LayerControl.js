@@ -9,27 +9,12 @@ class LayerControl extends Component {
       <div className="LayerControl">
         <div className="normalization">
           <div
-            className={mapLayer.norm === "household" ? "active" : ""}
-            onClick={() => onChange({ norm: "household" })}
-          >
-            per household
-          </div>
-          <div
-            className={mapLayer.norm === "capita" ? "active" : ""}
-            onClick={() => onChange({ norm: "capita" })}
-          >
-            per capita
-          </div>
-        </div>
-        <div className="normalization">
-          <div
             className={mapLayer.value === "tco2" ? "active" : ""}
             onClick={() => onChange({ value: "tco2" })}
           >
             Total CO<sub>2</sub> footprint
           </div>
         </div>
-
         <div className="subcomponents">
           <div className="label">Footprint components</div>
 
@@ -97,6 +82,25 @@ class LayerControl extends Component {
               onClick={() => onChange({ value: "homevalue" })}
             >
               Home value
+            </div>
+          </div>
+
+          <div className="subcomponents">
+            <div className="label">Normalization</div>
+
+            <div className="normalization">
+              <div
+                className={mapLayer.norm === "household" ? "active" : ""}
+                onClick={() => onChange({ norm: "household" })}
+              >
+                per household
+              </div>
+              <div
+                className={mapLayer.norm === "capita" ? "active" : ""}
+                onClick={() => onChange({ norm: "capita" })}
+              >
+                per capita
+              </div>
             </div>
           </div>
         </div>

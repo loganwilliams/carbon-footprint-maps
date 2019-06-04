@@ -5,6 +5,14 @@
   z-index: 3;
   width: 300px;
   flex: 1 1;
+  background: linear-gradient(to left, black 55%, rgba(0, 0, 0, 0.5));
+  border-radius: 4px;
+  padding: 0.25em;
+
+  .label {
+    margin-left: 0.25em;
+    font-weight: bold;
+  }
 
   .normalization {
     display: flex;
@@ -20,12 +28,14 @@
       cursor: pointer;
 
       &:hover {
-        background-color: rgba(40, 30, 50, 0.5);
+        background-color: rgba(120, 90, 150, 0.6);
+        color: white;
       }
     }
 
     .active {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(255, 255, 255, 0.7);
+      color: black;
       font-weight: bold;
     }
   }

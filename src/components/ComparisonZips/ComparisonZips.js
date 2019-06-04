@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ZipCode from "../ZipCode/ZipCode";
+import { stats } from "../../constants/constants";
 import "./ComparisonZips.scss";
 
 class ComparisonZips extends Component {
@@ -37,27 +38,45 @@ class ComparisonZips extends Component {
   }
 
   render() {
-    let sorted = this.sortValues([
-      {
-        value: "Total Household Carbon Footprint (tCO2e/yr)",
-        target:
-          this.props.targetZip["Total Household Carbon Footprint (tCO2e/yr)"] /
-          1,
-        tolerance: 0.9,
-        weight: 100
-      },
-      {
-        value: "IncomePerHousehold",
-        target: this.props.targetZip.IncomePerHousehold,
+    let sortArray = this.props.comparison.map(c => {
+      let multiple = 1;
+
+      if (c.dir === "higher") multiple = 1 / 1.5;
+      if (c.dir === "lower") multiple = 1.5;
+      console.log(c);
+
+      return {
+        value: stats[c.value].id,
+        target: this.props.targetZip[stats[c.value].id] / multiple,
         tolerance: 0.8,
-        weight: 1
-      },
-      {
-        value: "Population",
-        target: this.props.targetZip.popden,
-        weight: 5
-      }
-    ]);
+        weight: 100 / Math.sqrt(stats[c.value].max - stats[c.value].min)
+      };
+    });
+
+    console.log(sortArray);
+    let sorted = this.sortValues(sortArray);
+
+    //     [
+    //   {
+    //     value: "Total Household Carbon Footprint (tCO2e/yr)",
+    //     target:
+    //       this.props.targetZip["Total Household Carbon Footprint (tCO2e/yr)"] /
+    //       1,
+    //     tolerance: 0.9,
+    //     weight: 100
+    //   },
+    //   {
+    //     value: "IncomePerHousehold",
+    //     target: this.props.targetZip.IncomePerHousehold,
+    //     tolerance: 0.8,
+    //     weight: 1
+    //   },
+    //   {
+    //     value: "Population",
+    //     target: this.props.targetZip.popden,
+    //     weight: 5
+    //   }
+    // ]);
 
     console.log(sorted);
 

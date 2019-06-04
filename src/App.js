@@ -20,7 +20,7 @@ class App extends Component {
       mapLayer: { norm: "household", value: "tco2" },
       comparison: [
         { value: "income", dir: "similar" },
-        { value: "popden", dir: "similar" },
+        { value: "population", dir: "similar" },
         { value: "tco2", dir: "similar" }
       ]
     };
@@ -50,6 +50,12 @@ class App extends Component {
     this.setState({ mapLayer: { ...this.state.mapLayer, ...selection } });
   }
 
+  setComparison(comparison) {
+    this.setState({
+      comparison
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -71,13 +77,17 @@ class App extends Component {
             <div className="preview">
               <ZipCode preview={true} zip={this.state.selected} />
             </div>
-            <Controls />
+            <Controls
+              comparison={this.state.comparison}
+              onChange={this.setComparison.bind(this)}
+            />
             <ComparisonZips
               zipcodes={this.state.zipcodes}
               targetZip={this.state.selected}
               onClick={zip => {
                 this.select({ features: [{ properties: zip }] });
               }}
+              comparison={this.state.comparison}
             />
           </div>
         ) : null}

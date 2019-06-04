@@ -9,37 +9,43 @@ export const stats = {
     id: "Total Household Carbon Footprint (tCO2e/yr)",
     min: 0,
     max: 75,
-    name: "Per household carbon footprint (tCO2e/yr)"
+    name: "Per household carbon footprint (tCO2e/yr)",
+    shortname: "carbon footprint"
   },
   housing: {
     id: "Housing (tCO2e/yr)",
     min: 3.84,
     max: 25,
-    name: "Housing carbon footprint, per household (tCO2e/yr)"
+    name: "Housing carbon footprint, per household (tCO2e/yr)",
+    shortname: "carbon footprint (housing)"
   },
   transport: {
     id: "Transport (tCO2e/yr)",
     min: 2.76,
     max: 30,
-    name: "Transport carbon footprint, per household (tCO2e/yr)"
+    name: "Transport carbon footprint, per household (tCO2e/yr)",
+    shortname: "carbon footprint (transportation)"
   },
   food: {
     id: "Food (tCO2e/yr)",
     min: 3,
     max: 12,
-    name: "Food carbon footprint, per household (tCO2e/yr)"
+    name: "Food carbon footprint, per household (tCO2e/yr)",
+    shortname: "carbon footprint (food)"
   },
   goods: {
     id: "Goods (tCO2e/yr)",
     min: 2.5,
     max: 10,
-    name: "Goods carbon footprint, per household (tCO2e/yr)"
+    name: "Goods carbon footprint, per household (tCO2e/yr)",
+    shortname: "carbon footprint (goods)"
   },
   services: {
     id: "Services (tCO2e/yr)",
     min: 2.5,
     max: 12,
-    name: "Services carbon footprint, per household (tCO2e/yr)"
+    name: "Services carbon footprint, per household (tCO2e/yr)",
+    shortname: "carbon footprint (services)"
   },
   vmt: {
     id: "Vehicle miles traveled",
@@ -52,7 +58,8 @@ export const stats = {
     min: 2500,
     max: 130000,
     name: "Income per household",
-    units: "$"
+    units: "$",
+    shortname: "annual income"
   },
   homevalue: {
     id: "AverageHouseValue",
@@ -60,13 +67,28 @@ export const stats = {
     max: 800000,
     name: "Average house value",
     base: 2,
-    units: "$"
+    units: "$",
+    shortname: "home value"
   },
   popden: {
     id: "popden",
     min: 0,
     max: 30000,
     name: "Population density (pop/sq. mi.)",
-    base: 2
+    base: 2,
+    shortname: "population density"
+  },
+  population: {
+    id: "Population",
+    shortname: "population",
+    min: 0,
+    max: 80000
   }
 };
+
+export const dirs = ["similar", "lower", "higher"];
+export const options = [
+  ["income", "homevalue"],
+  ["population", "popden"],
+  ["tco2", "housing", "transport", "food", "goods", "services"]
+];
