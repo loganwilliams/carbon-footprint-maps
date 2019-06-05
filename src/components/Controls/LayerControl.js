@@ -70,6 +70,52 @@ class LayerControl extends Component {
               Services
             </div>
           </div>
+          <div className="subcomponents">
+            <div className="label">Controlled for income</div>
+
+            <div className="normalization">
+              <div
+                className={mapLayer.value === "tco2_income" ? "active" : ""}
+                onClick={() => onChange({ value: "tco2_income" })}
+              >
+                Total CO<sub>2</sub> footprint
+              </div>
+            </div>
+          </div>
+          <div className="normalization">
+            <div
+              className={mapLayer.value === "housing_income" ? "active" : ""}
+              onClick={() => onChange({ value: "housing_income" })}
+            >
+              Housing
+            </div>
+            <div
+              className={mapLayer.value === "transport_income" ? "active" : ""}
+              onClick={() => onChange({ value: "transport_income" })}
+            >
+              Transportation
+            </div>
+          </div>
+          <div className="normalization">
+            <div
+              className={mapLayer.value === "food_income" ? "active" : ""}
+              onClick={() => onChange({ value: "food_income" })}
+            >
+              Food
+            </div>
+            <div
+              className={mapLayer.value === "goods_income" ? "active" : ""}
+              onClick={() => onChange({ value: "goods_income" })}
+            >
+              Goods
+            </div>
+            <div
+              className={mapLayer.value === "services_income" ? "active" : ""}
+              onClick={() => onChange({ value: "services_income" })}
+            >
+              Services
+            </div>
+          </div>
         </div>
         <div className="subcomponents">
           <div className="label">Census statistics</div>

@@ -75,7 +75,15 @@ class App extends Component {
         {this.state.selected ? (
           <div className="right">
             <div className="preview">
-              <ZipCode preview={true} zip={this.state.selected} />
+              <ZipCode
+                preview={true}
+                zip={this.state.selected}
+                norm={this.state.mapLayer.norm}
+                stats={[
+                  this.state.comparison[0].value,
+                  this.state.comparison[1].value
+                ]}
+              />
             </div>
             <Controls
               comparison={this.state.comparison}
@@ -88,6 +96,7 @@ class App extends Component {
                 this.select({ features: [{ properties: zip }] });
               }}
               comparison={this.state.comparison}
+              mapLayer={this.state.mapLayer}
             />
           </div>
         ) : null}

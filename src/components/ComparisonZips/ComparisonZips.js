@@ -11,22 +11,40 @@ class ComparisonZips extends Component {
   sortValues(criteria) {
     let scores = this.props.zipcodes
       .filter(z =>
-        criteria.reduce(
-          (acc, cur) =>
+        criteria.reduce((acc, cur) => {
+          let target =
+            this.props.mapLayer.norm === "capita"
+              ? cur.target / cur.PersonsPerHousehold
+              : cur.target;
+
+          let value =
+            this.props.mapLayer.norm === "capita"
+              ? z[cur.value] / z.PersonsPerHousehold
+              : z[cur.value];
+
+          return (
             acc &&
             (cur.tolerance
-              ? z[cur.value] > cur.target * cur.tolerance &&
-                z[cur.value] < cur.target * (1.0 / cur.tolerance)
-              : true),
-          true
-        )
+              ? value > target * cur.tolerance &&
+                value < target * (1.0 / cur.tolerance)
+              : true)
+          );
+        }, true)
       )
       .map(z => ({
         score: Math.sqrt(
           criteria.reduce((acc, cur) => {
-            return (
-              (cur.weight || 1) * Math.pow(z[cur.value] - cur.target, 2) + acc
-            );
+            let target =
+              this.props.mapLayer.norm === "capita"
+                ? cur.target / cur.PersonsPerHousehold
+                : cur.target;
+
+            let value =
+              this.props.mapLayer.norm === "capita"
+                ? z[cur.value] / z.PersonsPerHousehold
+                : z[cur.value];
+
+            return (cur.weight || 1) * Math.pow(value - target, 2) + acc;
           }, 0)
         ),
         ...z
@@ -48,6 +66,7 @@ class ComparisonZips extends Component {
       return {
         value: stats[c.value].id,
         target: this.props.targetZip[stats[c.value].id] / multiple,
+        PersonsPerHousehold: this.props.targetZip.PersonsPerHousehold,
         tolerance: 0.8,
         weight: 100 / Math.sqrt(stats[c.value].max - stats[c.value].min)
       };
@@ -88,6 +107,11 @@ class ComparisonZips extends Component {
             onClick={() => {
               this.props.onClick(s);
             }}
+            norm={this.props.mapLayer.norm}
+            stats={[
+              this.props.comparison[0].value,
+              this.props.comparison[1].value
+            ]}
           />
         ))}
       </div>

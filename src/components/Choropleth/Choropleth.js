@@ -28,19 +28,30 @@ class Choropleth extends Component {
     const Map = this.state.map;
 
     let min = layer.min;
-    let range = layer.max - layer.min;
+    let max = layer.max;
 
     let valueStyle;
 
-    if (this.props.layers.norm === "household") {
-      valueStyle = ["get", layer.id];
+    if (
+      this.props.layers.value.slice(this.props.layers.value.length - 7) ===
+      "_income"
+    ) {
+      valueStyle = [
+        "-",
+        ["get", layer.id],
+        ["*", ["get", "IncomePerHousehold"], layer.incomeCoefficient]
+      ];
     } else {
-      valueStyle = ["/", ["get", layer.id], ["get", "PersonsPerHousehold"]];
-      min /= 2.65;
-      range /= 2.65;
+      valueStyle = ["get", layer.id];
     }
 
-    console.log(layer);
+    if (this.props.layers.norm === "capita") {
+      valueStyle = ["/", valueStyle, ["get", "PersonsPerHousehold"]];
+      min /= 2.65;
+      max /= 2.65;
+    }
+
+    let range = max - min;
     const base = layer.base || 1;
 
     return (

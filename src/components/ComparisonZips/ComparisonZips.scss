@@ -4,7 +4,7 @@
   flex-wrap: wrap;
 
   overflow: scroll;
-  height: calc(100vh - 2em - 250px);
+  max-height: calc(100vh - 2em - 340px);
   border-radius: 2px;
 }
 

@@ -20,17 +20,23 @@ class Legend extends Component {
     const base = layer.base || 1;
     const units = layer.units || "";
 
+    let decimal = 1;
+    if (layer.max < 10) {
+      decimal = 10;
+    }
+
     return (
       <div id="legend">
-        <div class="bar" />
-        <div class="labels">
-          <div id="min">{Math.round(min)}</div>
+        <div className="bar" />
+        <div className="labels">
+          <div id="min">{Math.round(min * decimal) / decimal}</div>
           <div id="mid">
             {(units === "$" ? "$" : "") +
-              Math.round(Math.pow(0.5, base) * range + min) +
+              Math.round((Math.pow(0.5, base) * range + min) * decimal) /
+                decimal +
               (units === "$" ? "" : " " + units)}
           </div>
-          <div id="max">{Math.round(min + range)}</div>
+          <div id="max">{Math.round((min + range) * decimal) / decimal}</div>
         </div>
       </div>
     );
