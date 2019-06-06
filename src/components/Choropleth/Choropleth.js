@@ -17,13 +17,9 @@ class Choropleth extends Component {
   }
 
   render() {
-    console.log(this.props.layers);
-
     let layer = this.props.layers
       ? stats[this.props.layers.value]
       : stats["tco2"];
-
-    console.log(layer);
 
     const Map = this.state.map;
 
@@ -56,6 +52,7 @@ class Choropleth extends Component {
 
     return (
       <Map
+        // eslint-disable-next-line
         style="mapbox://styles/loganw/cjw2lyxv406gz1cmrmlsm5j3m"
         center={this.props.center}
         zoom={this.state.zoom}

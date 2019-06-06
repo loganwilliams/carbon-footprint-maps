@@ -81,17 +81,13 @@ class ZipCode extends Component {
       >
         <div className="img">
           <img
-            src={`http://localhost:51830/${
+            src={`https://zip-code-ims.s3-us-west-2.amazonaws.com/${
               zip.GEOID10 ? zip.GEOID10 : zip.ZipCode
             }.jpg`}
+            alt={"Image of " + (zip.GEOID10 ? zip.GEOID10 : zip.ZipCode)}
           />
         </div>
         <div className="stats">
-          {/* {statsToShow.map(stat => (
-            <div className="stat" key={zip.ZipCode + stat}>{`${stat}: ${
-              zip[stat]
-            }`}</div>
-          ))} */}
           <div className="name">
             {zip.City +
               ", " +

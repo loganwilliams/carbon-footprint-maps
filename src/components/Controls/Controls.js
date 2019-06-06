@@ -14,9 +14,11 @@ export default class Controls extends Component {
 
     return (
       <div className="Controls">
+        <div className="info">Other ZIP Codes with</div>
+
         {rows.map(i => {
           return (
-            <div className="row">
+            <div className="row" key={"row " + i}>
               <select
                 onChange={e =>
                   this.onChange("dir", e.nativeEvent.target.value, i)
@@ -24,7 +26,9 @@ export default class Controls extends Component {
                 defaultValue={this.props.comparison[i].dir}
               >
                 {dirs.map(dir => (
-                  <option value={dir}>{dir}</option>
+                  <option key={dir} value={dir}>
+                    {dir}
+                  </option>
                 ))}
               </select>
               <select
@@ -34,14 +38,12 @@ export default class Controls extends Component {
                 defaultValue={this.props.comparison[i].value}
               >
                 {options[i].map(option => (
-                  <option
-                    value={option}
-                    selected={this.props.comparison[i].value === option}
-                  >
+                  <option key={option} value={option}>
                     {stats[option].shortname}
                   </option>
                 ))}
               </select>
+              {i !== 2 ? <div className="and">and</div> : null}
             </div>
           );
         })}

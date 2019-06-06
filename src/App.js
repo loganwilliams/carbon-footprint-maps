@@ -6,6 +6,7 @@ import Controls from "./components/Controls/Controls";
 import LayerControl from "./components/Controls/LayerControl";
 import "./App.css";
 import ComparisonZips from "./components/ComparisonZips/ComparisonZips";
+import missingZips from "./assets/missing.json";
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    d3.csv("/jones-kammen.csv").then(zipcodes => this.setState({ zipcodes }));
+    d3.csv("/jones-kammen.csv").then(zipcodes => {
+      zipcodes = zipcodes.filter(
+        z => z.ZipCode && missingZips.indexOf(z.ZipCode) < 0
+      );
+
+      this.setState({
+        zipcodes,
+        selected: zipcodes.filter(z => z.ZipCode === "11379")[0]
+      });
+    });
   }
 
   select(e) {

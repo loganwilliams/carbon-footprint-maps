@@ -4,10 +4,6 @@ import { stats } from "../../constants/constants";
 import "./ComparisonZips.scss";
 
 class ComparisonZips extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   sortValues(criteria) {
     let scores = this.props.zipcodes
       .filter(z =>
@@ -61,7 +57,6 @@ class ComparisonZips extends Component {
 
       if (c.dir === "higher") multiple = 1 / 1.5;
       if (c.dir === "lower") multiple = 1.5;
-      console.log(c);
 
       return {
         value: stats[c.value].id,
@@ -72,37 +67,13 @@ class ComparisonZips extends Component {
       };
     });
 
-    console.log(sortArray);
     let sorted = this.sortValues(sortArray);
-
-    //     [
-    //   {
-    //     value: "Total Household Carbon Footprint (tCO2e/yr)",
-    //     target:
-    //       this.props.targetZip["Total Household Carbon Footprint (tCO2e/yr)"] /
-    //       1,
-    //     tolerance: 0.9,
-    //     weight: 100
-    //   },
-    //   {
-    //     value: "IncomePerHousehold",
-    //     target: this.props.targetZip.IncomePerHousehold,
-    //     tolerance: 0.8,
-    //     weight: 1
-    //   },
-    //   {
-    //     value: "Population",
-    //     target: this.props.targetZip.popden,
-    //     weight: 5
-    //   }
-    // ]);
-
-    console.log(sorted);
 
     return (
       <div className="ComparisonZips">
         {sorted.map(s => (
           <ZipCode
+            key={s.ZipCode}
             zip={s}
             onClick={() => {
               this.props.onClick(s);

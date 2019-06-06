@@ -1,9 +1,3 @@
-export const statsToShow = [
-  "popden",
-  "Total Household Carbon Footprint (tCO2e/yr)",
-  "IncomePerHousehold"
-];
-
 export const stats = {
   tco2: {
     id: "Total Household Carbon Footprint (tCO2e/yr)",
