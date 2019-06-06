@@ -84,7 +84,7 @@ class ZipCode extends Component {
             src={`https://zip-code-ims.s3-us-west-2.amazonaws.com/${
               zip.GEOID10 ? zip.GEOID10 : zip.ZipCode
             }.jpg`}
-            alt={"Image of " + (zip.GEOID10 ? zip.GEOID10 : zip.ZipCode)}
+            alt=""
           />
         </div>
         <div className="stats">

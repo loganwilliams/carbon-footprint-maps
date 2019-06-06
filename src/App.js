@@ -80,7 +80,6 @@ class App extends Component {
               : ""
           }
           layers={this.state.mapLayer}
-          // onMouseMove={this.hover.bind(this)}
         />
         {this.state.selected ? (
           <div className="right">
